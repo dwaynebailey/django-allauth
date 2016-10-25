@@ -158,7 +158,7 @@ def _social_login_redirect(request, sociallogin):
 
 
 def _complete_social_login(request, sociallogin):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         get_account_adapter().logout(request)
     if sociallogin.is_existing:
         # Login existing user

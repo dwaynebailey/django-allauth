@@ -320,7 +320,7 @@ class AccountTests(TestCase):
             url,
             {'password1': 'newpass123',
              'password2': 'newpass123'})
-        self.assertTrue(user.is_authenticated())
+        self.assertTrue(user.is_authenticated)
         # EmailVerificationMethod.MANDATORY sends us to the confirm-email page
         self.assertRedirects(resp, '/confirm-email/')
 

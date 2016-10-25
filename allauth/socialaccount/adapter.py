@@ -115,7 +115,7 @@ class DefaultSocialAccountAdapter(object):
         Returns the default URL to redirect to after successfully
         connecting a social account.
         """
-        assert request.user.is_authenticated()
+        assert request.user.is_authenticated
         url = reverse('socialaccount_connections')
         return url
 

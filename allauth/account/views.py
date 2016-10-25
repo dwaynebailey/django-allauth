@@ -54,7 +54,7 @@ class RedirectAuthenticatedUserMixin(object):
         # WORKAROUND: https://code.djangoproject.com/ticket/19316
         self.request = request
         # (end WORKAROUND)
-        if request.user.is_authenticated() and \
+        if request.user.is_authenticated and \
                 app_settings.AUTHENTICATED_LOGIN_REDIRECTS:
             redirect_to = self.get_authenticated_redirect_url()
             response = HttpResponseRedirect(redirect_to)
@@ -673,14 +673,14 @@ class LogoutView(TemplateResponseMixin, View):
     def get(self, *args, **kwargs):
         if app_settings.LOGOUT_ON_GET:
             return self.post(*args, **kwargs)
-        if not self.request.user.is_authenticated():
+        if not self.request.user.is_authenticated:
             return redirect(self.get_redirect_url())
         ctx = self.get_context_data()
         return self.render_to_response(ctx)
 
     def post(self, *args, **kwargs):
         url = self.get_redirect_url()
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             self.logout()
         return redirect(url)
 
