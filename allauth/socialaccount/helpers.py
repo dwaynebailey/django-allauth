@@ -97,7 +97,7 @@ def render_authentication_error(request,
 
 
 def _add_social_account(request, sociallogin):
-    if request.user.is_anonymous():
+    if request.user.is_anonymous:
         # This should not happen. Simply redirect to the connections
         # view (which has a login required)
         return HttpResponseRedirect(reverse('socialaccount_connections'))

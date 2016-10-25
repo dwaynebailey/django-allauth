@@ -288,7 +288,7 @@ class ConfirmEmailView(TemplateResponseMixin, View):
         if user_pk_str:
             user_pk = url_str_to_user_pk(user_pk_str)
         user = confirmation.email_address.user
-        if user_pk == user.pk and self.request.user.is_anonymous():
+        if user_pk == user.pk and self.request.user.is_anonymous:
             return perform_login(self.request,
                                  user,
                                  app_settings.EmailVerificationMethod.NONE,
