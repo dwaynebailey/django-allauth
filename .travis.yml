@@ -32,9 +32,6 @@ matrix:
       env: DJANGO="Django<1.11"
     - python: "3.3"
       env: DJANGO="Django<2.0"
-branches:
- only:
-  - master
 script:
   - make qa
   - coverage run manage.py test allauth
